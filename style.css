@@ -1,0 +1,132 @@
+:root {
+  --gap: 2rem;
+  --line-color: rgb(167, 167, 167);
+  --line-thickness: 1px;
+  --line-offset: calc(var(--gap) / 2);
+}
+
+body {
+  max-width: 799px;
+  margin: 0 auto;
+  padding: 0 calc(var(--gap) / 2);
+}
+
+.title {
+  color: bisque;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 0.5rem;
+  text-align: center;
+}
+
+.grid_container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--gap);
+  overflow: hidden;
+}
+
+.grid__item {
+  position: relative;
+  background-color: bisque;
+  border-radius: 1rem;
+  text-align: center;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 0;
+}
+
+/* psedo */
+.grid__item::before,
+.grid__item::after {
+  content: "";
+  position: absolute;
+  background-color: var(--line-color);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* horizontal */
+.grid__item::after {
+  inline-size: 100%;
+  block-size: var(--line-thickness);
+  top: calc(var(--line-offset) * -1);
+  left: 0;
+}
+
+/* virtical */
+.grid__item::before {
+  inline-size: var(--line-thickness);
+  block-size: 100vh;
+  left: calc(var(--line-offset) * -1);
+  top: 0;
+}
+
+.grid__item > h1 {
+  color: rgb(248, 206, 155);
+}
+
+@media (min-width: 770px) {
+  body {
+    max-width: 770px;
+    padding: 0 0;
+  }
+  .grid_container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .grid__item {
+    height: 275px;
+  }
+  .title {
+    font-size: 0.75rem;
+  }
+}
+
+@media (min-width: 1100px) {
+  body {
+    max-width: 920px;
+    padding: 0 0;
+  }
+  .grid_container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .grid__item {
+    height: 300px;
+  }
+  .title {
+    font-size: 0.75rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  body {
+    max-width: 1280px;
+    padding: 0 0;
+  }
+  .grid_container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .grid__item {
+    height: 250px;
+  }
+  .title {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 1400px) {
+  body {
+    max-width: 1280px;
+    padding: 0 0;
+  }
+  .grid_container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .grid__item {
+    height: 250px;
+  }
+  .title {
+    font-size: 1rem;
+  }
+}
